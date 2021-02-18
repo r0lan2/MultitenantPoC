@@ -14,20 +14,9 @@ namespace BasePathStrategySample
 {
     public class MultiTenantStoreDbContext : EFCoreStoreDbContext<TenantInfo>
     {
-        
         public MultiTenantStoreDbContext(DbContextOptions options) : base(options)
         {
         }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer(
-                    "Data Source=SAQ-PC-251394\\SQL2019;Initial Catalog=FarmerDbCatalog;Trusted_Connection=True");
-            }
-        }
-
     }
 
     public class ContextFactoryForMigration : IDesignTimeDbContextFactory<MultiTenantStoreDbContext>

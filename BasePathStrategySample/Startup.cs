@@ -19,6 +19,10 @@ namespace BasePathStrategySample
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddDbContext<MultiTenantStoreDbContext>(options =>
+                options.UseSqlServer(Configuration["DefaultConnection"]));
+
             services.AddControllersWithViews();
 
             services.AddMultiTenant<TenantInfo>()
