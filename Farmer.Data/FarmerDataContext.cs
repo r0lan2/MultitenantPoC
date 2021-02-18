@@ -33,8 +33,8 @@ namespace Farmer.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // Use the connection string to connect to the per-tenant database.
-            if (!optionsBuilder.IsConfigured)
-                optionsBuilder.UseSqlServer(TenantInfo.ConnectionString);
+            //if (!optionsBuilder.IsConfigured)
+            //    optionsBuilder.UseSqlServer(TenantInfo.ConnectionString);
         }
 
     }

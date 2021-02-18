@@ -57,16 +57,16 @@ namespace BasePathStrategySample
             var scopeServices = sp.CreateScope().ServiceProvider;
             var store = scopeServices.GetRequiredService<IMultiTenantStore<TenantInfo>>();
 
-            if (await store.TryGetAsync("tenant-camanchaca") == null)
+            if (await store.TryGetAsync("tenant-customer1") == null)
                 await store.TryAddAsync(new TenantInfo
                 {
-                    Id = "tenant-camanchaca", Identifier = "camanchaca", Name = "Camanchaca",
-                    ConnectionString = "camanchaca_conn_string"
+                    Id = "tenant-customer1", Identifier = "customer1", Name = "Customer 1",
+                    ConnectionString = "customer1_conn_string"
                 });
 
-            if (await store.TryGetAsync("tenant-mowi") == null)
+            if (await store.TryGetAsync("tenant-customer2") == null)
                 await store.TryAddAsync(new TenantInfo
-                    {Id = "tenant-mowi", Identifier = "mowi", Name = "Mowi", ConnectionString = "mowi_conn_string"});
+                    {Id = "tenant-customer2", Identifier = "customer2", Name = "Customer 2", ConnectionString = "customer2_conn_string" });
         }
     }
 }
