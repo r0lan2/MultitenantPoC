@@ -19,17 +19,20 @@ namespace BasePathStrategySample
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews();
+
+            services.AddDbContext<FarmerDataContext>();
 
             services.AddDbContext<MultiTenantStoreDbContext>(options =>
                 options.UseSqlServer(Configuration["DefaultConnection"]));
 
-            services.AddControllersWithViews();
+            
 
             services.AddMultiTenant<TenantInfo>()
                 .WithEFCoreStore<MultiTenantStoreDbContext, TenantInfo>()
                 .WithBasePathStrategy();
 
-            services.AddScoped<FarmerDataContext>();
+           
 
 
 

@@ -15,7 +15,7 @@ namespace BasePathStrategySample.Controllers
         
         public IActionResult Index()
         {
-            //var transactions = _context.Transactions.ToList();
+            var transactions = _context.Transactions.ToList();
             var ti = HttpContext.GetMultiTenantContext<TenantInfo>()?.TenantInfo;
             return View(ti);
         }
