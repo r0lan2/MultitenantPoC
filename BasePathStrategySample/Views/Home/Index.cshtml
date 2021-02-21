@@ -1,10 +1,10 @@
-﻿@model TenantInfo
+﻿@model BasePathStrategySample.Controllers.TransactionViewModel
 
 @{
     ViewData["Title"] = "Base Path Strategy Sample";
 }
 
-@if(Model != null)
+@if (Model.TenantInfo != null)
 {
     <h3 class="mt-4">TenantInfo Values</h3>
 
@@ -18,24 +18,52 @@
 
         <tbody>
             <tr>
-                <td>@nameof(Model.Id)</td>
-                <td>@Model.Id</td>
+                <td>@nameof(Model.TenantInfo.Id)</td>
+                <td>@Model.TenantInfo.Id</td>
             </tr>
             <tr>
-                <td>@nameof(Model.Identifier)</td>
-                <td>@Model.Identifier</td>
+                <td>@nameof(Model.TenantInfo.Identifier)</td>
+                <td>@Model.TenantInfo.Identifier</td>
             </tr>
             <tr>
-                <td>@nameof(Model.Name)</td>
-                <td>@Model.Name</td>
+                <td>@nameof(Model.TenantInfo.Name)</td>
+                <td>@Model.TenantInfo.Name</td>
             </tr>
             <tr>
-                <td>@nameof(Model.ConnectionString)</td>
-                <td>@Model.ConnectionString</td>
+                <td>@nameof(Model.TenantInfo.ConnectionString)</td>
+                <td>@Model.TenantInfo.ConnectionString</td>
             </tr>
         </tbody>
-    
     </table>
+
+    <br/>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="width:25%">TransactionId</th>
+                <th>SiteId</th>
+                <th>TransactionType</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        
+        @foreach (var tran in Model.Transactions)
+        {
+            <tr>
+                <td>@tran.TransactionId</td>
+                <td>@tran.SiteId</td>
+                <td>@tran.TransactionType</td>
+            </tr>
+        }
+        </tbody>
+
+    </table>
+
+
+
+
 }
 else
 {
@@ -53,5 +81,5 @@ else
     WithConfigurationStore().
     WithBasePathStrategy();</code></pre>
         <p>Click the links on the navbar to see it in action!</p>
-    </div> 
+    </div>
 }
